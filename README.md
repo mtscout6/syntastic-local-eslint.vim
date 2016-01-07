@@ -5,7 +5,7 @@ Prefer local repo install of eslint over global install with syntastic
 Installation Instructions
 -------------------------
 
-Using [vim plugged](...) you just need to add:
+Using [vim plugged](https://github.com/junegunn/vim-plug) you just need to add:
 
 ```
 Plug 'pmsorhaindo/syntastic-local-eslint.vim'
