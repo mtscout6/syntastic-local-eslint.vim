@@ -8,7 +8,7 @@ Installation Instructions
 Using [vim plugged](https://github.com/junegunn/vim-plug) you just need to add:
 
 ```
-Plug 'pmsorhaindo/syntastic-local-eslint.vim'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 ```
 
 Inspired By
