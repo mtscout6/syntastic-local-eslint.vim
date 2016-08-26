@@ -1,4 +1,4 @@
-let s:lcd = getcwd()
+let s:lcd = fnameescape(getcwd())
 silent! exec "lcd" expand('%:p:h')
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 exec "lcd" s:lcd
