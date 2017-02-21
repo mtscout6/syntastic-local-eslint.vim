@@ -14,3 +14,6 @@ endif
 " and set it as a checker for the current buffer
 let s:eslint_path = system(s:which_cmd)
 let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+
+" restore local cwd
+silent! exec 'lcd' s:lcd
