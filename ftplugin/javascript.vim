@@ -11,24 +11,23 @@ fun! s:GetNodeModulesAbsPath ()
   return path is '' ? '' : fnamemodify(path, ':p')
 endfun
 
-" return full path of local eslint executable
-"  or an empty string if no executable found
-fun! s:GetEslintExec (node_modules)
-  let eslint_guess = a:node_modules is '' ? '' : a:node_modules . '.bin/eslint'
-  return exepath(eslint_guess)
-endfun
-
-" if eslint_exec found successfully, set it for the current buffer
-fun! s:LetEslintExec (eslint_exec)
-  if a:eslint_exec isnot ''
-    let b:syntastic_javascript_eslint_exec = a:eslint_exec
+fun! s:FindJavascriptLinter (node_modules)
+  if a:node_modules is ''
+    return
+  elseif executable(a:node_modules . '.bin/eslint')
+    let b:syntastic_javascript_eslint_exec = exepath(a:node_modules . '.bin/eslint')
+  elseif executable(a:node_modules . '.bin/standard')
+    let g:syntastic_javascript_checkers = ['standard']
+    let b:syntastic_javascript_standard_exec = exepath(a:node_modules . '.bin/standard')
+  elseif executable(a:node_modules . '.bin/semistandard')
+    let g:syntastic_javascript_checkers = ['standard']
+    let b:syntastic_javascript_standard_exec = exepath(a:node_modules . '.bin/semistandard')
   endif
 endfun
 
 fun! s:main ()
   let node_modules = s:GetNodeModulesAbsPath()
-  let eslint_exec = s:GetEslintExec(node_modules)
-  call s:LetEslintExec(eslint_exec)
+  call s:FindJavascriptLinter(node_modules)
 endfun
 
 call s:main()
