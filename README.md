@@ -1,6 +1,9 @@
 # syntastic-local-eslint.vim
 
-Prefer local repo install of eslint over global install with syntastic
+Prefer local repo install of eslint over global install with syntastic.
+
+Works for javascript and vue, and can be easily extended to other
+JS-derived filetypes.
 
 Installation Instructions
 -------------------------
