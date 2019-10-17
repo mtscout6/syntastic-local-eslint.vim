@@ -21,7 +21,7 @@ endfun
 " if eslint_exec found successfully, set it for the current buffer
 fun! s:LetEslintExec (eslint_exec)
   if a:eslint_exec isnot ''
-    let b:syntastic_javascript_eslint_exec = a:eslint_exec
+    execute 'let b:syntastic_' . &filetype . '_eslint_exec = a:eslint_exec'
   endif
 endfun
 
